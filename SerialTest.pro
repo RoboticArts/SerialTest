@@ -26,16 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     masterthread.cpp \
-    form.cpp \
     portwindow.cpp
 
 HEADERS  += mainwindow.h \
     masterthread.h \
-    form.h \
     portwindow.h
 
 FORMS    += mainwindow.ui \
-    form.ui \
     portwindow.ui
 
 QT += serialport #Se añade la libreria del Puerto Serie

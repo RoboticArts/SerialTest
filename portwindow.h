@@ -5,6 +5,7 @@
 #include <QString>
 
 
+
 namespace Ui {
 class PortWindow;
 }
@@ -25,7 +26,10 @@ private:
 
 public:
      QString getSerialPort();
+     int getWaitTimeOut();
+
 private slots:
+
      void on_ConnectButton_clicked();
 };
 

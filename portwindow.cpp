@@ -1,5 +1,6 @@
 #include "portwindow.h"
 #include "ui_portwindow.h"
+#include "mainwindow.h"
 
 #include <QtSerialPort/QSerialPortInfo>
 #include <QSerialPort>
@@ -16,6 +17,7 @@ PortWindow::PortWindow(QWidget *parent) :
 
 }
 
+
 PortWindow::~PortWindow()
 {
     delete ui;
@@ -28,9 +30,14 @@ QString PortWindow::getSerialPort()
    return ui -> comboBox -> currentText();
 }
 
-
-void PortWindow::on_ConnectButton_clicked()
-{
-
-
+int PortWindow::getWaitTimeOut(){
+   return ui ->spinBox -> value();
 }
+
+
+void PortWindow::on_ConnectButton_clicked() // Is connect
+{
+    close();
+}
+
+
