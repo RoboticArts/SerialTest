@@ -27,6 +27,7 @@ private:
 public:
      QString getSerialPort();
      int getWaitTimeOut();
+     bool event(QEvent *event);
 
 private slots:
 

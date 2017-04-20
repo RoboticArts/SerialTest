@@ -28,6 +28,10 @@ public:
     int timeout; //
     QString request; // Store request introduced on the MainWindow
 
+    bool toggle = 1; // Toggle button "Activate" with the goal activate and desactivate when button is pressed.
+    bool getKeyboardEnable();
+    void setKeyboardEnable(bool state);
+
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
      PortWindow MiPuertoSerie;
@@ -48,6 +52,8 @@ private:
 
     MasterThread thread;
 
+    bool KeyboardState = 0;
+
 public slots:
     void SettingSerialPort();
 
@@ -63,6 +69,7 @@ private slots:
     void on_SendButton_clicked();
     void on_SliderX_valueChanged(int value);
     void on_SliderY_valueChanged(int value);
+    void on_EnableSliderButton_clicked();
 };
 
 #endif // MAINWINDOW_H

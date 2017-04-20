@@ -15,7 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
 
+    //Init
     ui->setupUi(this);
+    ui->LabelInfo->hide();
 
     //Set Setial Port
      connect(ui->ButtonSerialPort , SIGNAL(clicked(bool)),this, SLOT(SettingSerialPort()));
@@ -111,15 +113,36 @@ void MainWindow::setControlsEnabled(bool enable)
 }
 */
 
-
-
-void MainWindow::on_SliderX_valueChanged(int)
+void MainWindow::on_EnableSliderButton_clicked() // Is a toggle button
 {
     if(port.isEmpty())
     {
         QMessageBox::information(this,"COM","Puerto COM no detectado");
         return;
     }
+
+    if(toggle == 1){
+
+        ui->SliderX->setEnabled(true);
+        ui->SliderY->setEnabled(true);
+        ui->LabelInfo->show();
+        setKeyboardEnable(1);
+        toggle = 0;
+    }
+    else{
+
+        ui->SliderX->setEnabled(false);
+        ui->SliderY->setEnabled(false);
+        ui->LabelInfo->hide();
+        setKeyboardEnable(0);
+        toggle = 1;
+    }
+
+}
+
+
+void MainWindow::on_SliderX_valueChanged(int)
+{
 
     int n = ui->SliderX-> value();
 
@@ -131,11 +154,6 @@ void MainWindow::on_SliderX_valueChanged(int)
 
 void MainWindow::on_SliderY_valueChanged(int)
 {
-    if(port.isEmpty())
-    {
-        QMessageBox::information(this,"COM","Puerto COM no detectado");
-        return;
-    }
 
     int n = ui->SliderY-> value();
 
@@ -149,36 +167,50 @@ void MainWindow::on_SliderY_valueChanged(int)
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
 
-    if(event -> key() == Qt::Key_A)
+    if(getKeyboardEnable()) //Activate keyboard if button "Activar" is enable
+
     {
-        int x = ui -> SliderX -> value();
-        if(x>=0)
-            ui->SliderX->setValue(x-5);
+
+        if(event -> key() == Qt::Key_A)
+        {
+            int x = ui -> SliderX -> value();
+            if(x>=0)
+                ui->SliderX->setValue(x-5);
+        }
+
+
+        if(event -> key() == Qt::Key_D)
+        {
+            int x = ui -> SliderX -> value();
+            if(x<=255)
+                ui->SliderX->setValue(x+5);
+        }
+
+
+        if(event -> key() == Qt::Key_W)
+        {
+            int y = ui -> SliderY -> value();
+            if(y<=255)
+                ui->SliderY->setValue(y+5);
+        }
+
+
+        if(event -> key() == Qt::Key_S)
+        {
+            int y = ui -> SliderY -> value();
+            if(y>=0)
+                ui->SliderY->setValue(y-5);
+        }
+
     }
+}
 
+bool MainWindow::getKeyboardEnable()
+{
+    return KeyboardState;
+}
 
-    if(event -> key() == Qt::Key_D)
-    {
-        int x = ui -> SliderX -> value();
-        if(x<=255)
-            ui->SliderX->setValue(x+5);
-    }
-
-
-    if(event -> key() == Qt::Key_W)
-    {
-        int y = ui -> SliderY -> value();
-        if(y<=255)
-            ui->SliderY->setValue(y+5);
-    }
-
-
-    if(event -> key() == Qt::Key_S)
-    {
-        int y = ui -> SliderY -> value();
-        if(y>=0)
-            ui->SliderY->setValue(y-5);
-    }
-
-
+void MainWindow::setKeyboardEnable(bool state)
+{
+    KeyboardState = state;
 }

@@ -4,17 +4,18 @@
 
 #include <QtSerialPort/QSerialPortInfo>
 #include <QSerialPort>
+#include <QEvent>
 
 PortWindow::PortWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PortWindow)
 {
     ui->setupUi(this);
-
+/*
     const auto infos = QSerialPortInfo::availablePorts();
     for (const QSerialPortInfo &info : infos)
         ui -> comboBox -> addItem(info.portName());
-
+*/
 }
 
 
@@ -40,4 +41,19 @@ void PortWindow::on_ConnectButton_clicked() // Is connect
     close();
 }
 
+
+bool PortWindow::event(QEvent *event) //When PortWindow is opened, we read the availables COM and write them in comboBox
+{
+    if (event->type() == QEvent::WindowActivate) {
+
+        ui->comboBox->clear();
+
+        const auto infos = QSerialPortInfo::availablePorts();
+        for (const QSerialPortInfo &info : infos)
+            ui -> comboBox -> addItem(info.portName());
+
+    }
+    return QWidget::event(event);
+
+}
 

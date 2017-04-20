@@ -36,3 +36,6 @@ FORMS    += mainwindow.ui \
     portwindow.ui
 
 QT += serialport #Se añade la libreria del Puerto Serie
+
+RESOURCES += \
+    icons.qrc

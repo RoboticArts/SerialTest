@@ -6,192 +6,219 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>352</width>
-    <height>276</height>
+    <width>395</width>
+    <height>217</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>395</width>
+    <height>217</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>395</width>
+    <height>217</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Arduino Serial Port</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/chip.png</normaloff>:/chip.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PUERTO</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="LabelPort">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>20</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>xxxxx</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="ButtonSerialPort">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>20</y>
-      <width>75</width>
-      <height>23</height>
+      <x>270</x>
+      <y>130</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Conectar</string>
     </property>
    </widget>
-   <widget class="QLabel" name="LabelTest">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>40</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TEST</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="TestButton">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
+      <x>10</x>
       <y>10</y>
-      <width>75</width>
-      <height>23</height>
+      <width>251</width>
+      <height>25</height>
      </rect>
     </property>
-    <property name="text">
-     <string>TEST</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="EditStringData"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="SendButton">
+       <property name="text">
+        <string>Enviar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLineEdit" name="EditStringData">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="SendButton">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>90</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Enviar</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>47</width>
-      <height>13</height>
+      <width>251</width>
+      <height>111</height>
      </rect>
     </property>
-    <property name="text">
-     <string>TIEMPO</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <widget class="QSlider" name="SliderX">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="LabelInfo">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhNone</set>
+         </property>
+         <property name="text">
+          <string>Usa ASDW para mover los sliders                </string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QSlider" name="SliderY">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="EnableSliderButton">
+         <property name="text">
+          <string>Activar Sliders</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLabel" name="LabelTime">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>50</y>
-      <width>47</width>
-      <height>13</height>
+      <x>270</x>
+      <y>10</y>
+      <width>111</width>
+      <height>111</height>
      </rect>
     </property>
-    <property name="text">
-     <string>00000</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLCDNumber" name="DisplayX"/>
+     </item>
+     <item>
+      <widget class="QLCDNumber" name="DisplayY"/>
+     </item>
+    </layout>
    </widget>
-   <widget class="QSlider" name="SliderX">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>130</y>
-      <width>160</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>255</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QSlider" name="SliderY">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
+      <x>10</x>
       <y>170</y>
-      <width>160</width>
-      <height>22</height>
+      <width>119</width>
+      <height>16</height>
      </rect>
     </property>
-    <property name="maximum">
-     <number>255</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Tiempo:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="LabelTime">
+       <property name="text">
+        <string>No configurado</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLCDNumber" name="DisplayX">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>90</y>
-      <width>64</width>
-      <height>23</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLCDNumber" name="DisplayY">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>130</y>
-      <width>64</width>
-      <height>23</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="EnableSliderButton">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
+      <x>150</x>
       <y>170</y>
-      <width>81</width>
-      <height>23</height>
+      <width>109</width>
+      <height>16</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Activar Sliders</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Puerto:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="LabelPort">
+       <property name="text">
+        <string>No detectado</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -199,7 +226,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>352</width>
+     <width>395</width>
      <height>21</height>
     </rect>
    </property>
@@ -218,6 +245,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
