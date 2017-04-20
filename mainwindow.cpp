@@ -143,11 +143,15 @@ void MainWindow::on_EnableSliderButton_clicked() // Is a toggle button
 
 void MainWindow::on_SliderX_valueChanged(int)
 {
+   //Requests always has form "XnumerYnumber". Example: X200Y100 Sets X in 200 position and Y in 100 position
 
-    int n = ui->SliderX-> value();
+    int x = ui->SliderX-> value();
+    int y = ui->SliderY-> value();
 
-    ui-> DisplayX -> display(n); //Set LCDNumber
-    request = QString::number(n); // Store value in "request"
+    ui-> DisplayX -> display(x); //Set LCDNumber
+    //request = QString::number(n); // Store value in "request"
+    request = QString("X%1Y%2\n").arg(x).arg(y);
+
     transaction();
 }
 
@@ -155,10 +159,12 @@ void MainWindow::on_SliderX_valueChanged(int)
 void MainWindow::on_SliderY_valueChanged(int)
 {
 
-    int n = ui->SliderY-> value();
+    int y = ui->SliderY-> value();
+    int x = ui->SliderX ->value();
 
-    ui-> DisplayY -> display(n); //Set LCDNumber
-    request = QString::number(n); // Store value in "request"
+    ui-> DisplayY -> display(y); //Set LCDNumber
+    //request = QString::number(n); // Store value in "request"
+    request = QString("X%1Y%2\n").arg(x).arg(y);
     transaction();
 
 }
